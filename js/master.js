@@ -1,12 +1,11 @@
-let arryofinput=document.querySelectorAll('.rech p')
 
-for (let i=0;i<arryofinput.length;i++)
-{
-    console.log(arryofinput[i])
-    //arryofinput[i].style.display='block'
+
+
+function WarningMassage(){
+let x=document.getElementsByClassName('email');
+let email=/\w+@gmail.com /ig;
+if (!(x.match(email))){
+document.getElementsByClassName('warning').style.display='block';
+    }
+
 }
-
-
-let signup=document.getElementsByClassName('signup');
-
-signup.addEventListener("click",action);
