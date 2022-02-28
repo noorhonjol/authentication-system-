@@ -1,6 +1,7 @@
 const express = require('express');
 
 const app = express();
+const js=require('./public/js/master')
 
 // const db= require('./db');
 
@@ -14,6 +15,10 @@ app.use(expresslayout);
 app.set('view engine','ejs')
 
 
+app.post('/sign-up',(req,res)=>{
+    req.body;
+    
+})
 
 app.get('',(req,res)=>{
     res.render('index')
