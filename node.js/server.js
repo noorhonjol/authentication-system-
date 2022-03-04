@@ -4,62 +4,66 @@ const app = express();
 // const js=require('./public/js/master')
 // const db= require('./db');
 
+const Bodyparser=require('body-parser');
+
 const expresslayout=require('express-ejs-layouts');
 
 app.use(express.static('public'))
-// app.use('/css',express.static(__dirname,+'public/css'))
-
+app.use('/css',express.static(__dirname,+'public/css'))
+app.use(Bodyparser.urlencoded());
+app.use(Bodyparser.json());
 
 app.use(expresslayout);
 app.set('view engine','ejs')
 
 
-app.get('',(req,res)=>{
-    res.render('index')
+// app.get('',(req,res)=>{
+//     res.render('index')
 
-})
+// })
+
 app.get('/sign-up',(req,res)=>{
     res.render('sign-up')
 })
-app.get('/login',(req,res)=>{
+// app.get('/login',(req,res)=>{
 
-    res.render("login-in")
-})
+//     res.render("login-in")
+// })
 
-async function main(){
-    const uri="mongodb+srv://noorhonjol:123456789n@cluster0.kc6fp.mongodb.net/a?retryWrites=true&w=majority    "
-    const client=new MongoClient(uri);
-    try {
-        await client.connect();
+// async function main(){
+//     const uri="mongodb+srv://noorhonjol:123456789n@cluster0.kc6fp.mongodb.net/a?retryWrites=true&w=majority    "
+//     const client=new MongoClient(uri);
+//     try {
+//         await client.connect();
 
-        await createListing(client,
-            {
-                name: "Lovely Loft",
-                summary: "A charming loft in Paris",
-                bedrooms: 1,
-                bathrooms: 1
-            }
-        );
+//         await createListing(client,
+//             {
+//                 name: "Lovely Loft",
+//                 summary: "A charming loft in Paris",
+//                 bedrooms: 1,
+//                 bathrooms: 1
+//             }
+//         );
 
-    } catch (e) {
-        console.error(e);
-    }finally{
-        await client.close();
-    }
+//     } catch (e) {
+//         console.error(e);
+//     }finally{
+//         await client.close();
+//     }
     
-}
-main().catch(console.error);
+// }
+// main().catch(console.error);
 
-async function listDatabases(client){
+// async function listDatabases(client){
 
-    const databasesList= await client.db().admin().listDatabases();
+//     const databasesList= await client.db().admin().listDatabases();
     
-    console.log("databases");
+//     console.log("databases");
 
-    databasesList.databases.forEach(db => {
-        console.log(` - ${db.name}`);
-    })
-}
+//     databasesList.databases.forEach(db => {
+//         console.log(` - ${db.name}`);
+//     })
+// }
 
 async function createListing(client, newListing){
 
@@ -67,9 +71,19 @@ async function createListing(client, newListing){
     console.log(`New listing created with the following id: ${result.insertedId}`);
 }
 
+    const uri="mongodb+srv://noorhonjol:123456789@cluster0.kc6fp.mongodb.net/a?retryWrites=true&w=majority    "
+    const client=new MongoClient(uri);
+    try {
+        client.connect();
+    } catch (error) {
+        console.error(e);
+    }finally{
+            client.close();
+        }
 
-
-
+app.post('/sign-up',(req,res)=>{
+    createListing(client,req.body);
+})
 
 // app.post('/one',(req,res)=>{
 //     let one = req.body
