@@ -1,9 +1,6 @@
 const express = require('express');
 const {MongoClient }=require('mongodb')
 const app = express();
-// const js=require('./public/js/master')
-// const db= require('./db');
-
 const Bodyparser=require('body-parser');
 
 const expresslayout=require('express-ejs-layouts');
@@ -71,30 +68,23 @@ async function createListing(client, newListing){
     console.log(`New listing created with the following id: ${result.insertedId}`);
 }
 
-    const uri="mongodb+srv://noorhonjol:123456789@cluster0.kc6fp.mongodb.net/a?retryWrites=true&w=majority    "
-    const client=new MongoClient(uri);
-    try {
-        client.connect();
-    } catch (error) {
-        console.error(e);
-    }finally{
-            client.close();
-        }
+
+const uri="mongodb+srv://noorhonjol:123456789n@cluster0.kc6fp.mongodb.net/a?retryWrites=true&w=majority    "
+const client=new MongoClient(uri);
+client.connect();
+
 
 app.post('/sign-up',(req,res)=>{
-    createListing(client,req.body);
+    
+
+    // if(req.body.email==listemail){
+
+    // }else{
+        createListing(client,req.body);
+    // }
+
 })
 
-// app.post('/one',(req,res)=>{
-//     let one = req.body
-//     try{
-//         let status=db.addone(one);
-//         res.status(201).json(status);
-//     }
-//     catch(error){
-//         res.status(500).json({status:"Erorr", message:"something wrong"});
-//     }
-// })
 
 app.listen(3200, ()=>{
     console.log("server is run");
