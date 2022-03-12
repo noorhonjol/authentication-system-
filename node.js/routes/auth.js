@@ -1,4 +1,5 @@
 const router=require('express').Router()
+const req = require('express/lib/request');
 const User=require('../model/user')
 router.post('/register',async(req,res)=>{
     const user =new User({
@@ -16,7 +17,7 @@ router.post('/register',async(req,res)=>{
         res.status(400).send(err)
     }
 })
-
+require('./')
 router.post('/login')
 
 
