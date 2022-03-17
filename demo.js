@@ -31,9 +31,9 @@ async function creatlisting(client , newlisting){
 }
 
 async function listDataBases( client){
-  const DataBasesList =  await client.db().admin().listDataBases();
-  console.log("Databases:");
-  DataBasesList.databases.forEach(db => {
-      console.log('- ${db.name}')
-  })
+        const DataBasesList =  await client.db().admin().listDataBases();
+            console.log("Databases:");
+                DataBasesList.databases.forEach(db => {
+                    console.log('- ${db.name}')
+})
 }
