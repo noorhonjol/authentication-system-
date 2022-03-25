@@ -35,9 +35,9 @@ app.use('/api/user',authRoute)
 //     res.render('index')
 
 // })
-app.get('/sign-up',(req,res)=>{
-    res.render('sign-up')
-})
+// app.get('/sign-up',(req,res)=>{
+//     res.render('sign-up')
+// })
 // app.get('/login',(req,res)=>{
 
 //     res.render("login-in")
