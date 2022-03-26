@@ -22,10 +22,11 @@ mongoose.connect(process.env.DB_CONNECT,
     console.log("connected to db");
 })
 
-
+app.get('/api/user/login',(req,res)=>{res.render('layout')})
 app.use(Bodyparser.urlencoded());
 app.use(Bodyparser.json());
 app.use('/api/user',authRoute)
+
 //app.get('/views/account')
 
 
