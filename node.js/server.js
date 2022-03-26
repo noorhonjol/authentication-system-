@@ -11,8 +11,7 @@ const expresslayout=require('express-ejs-layouts');
 app.use(express.static('public'))
 
 app.use(expresslayout);
-app.set('view engine','ejs')
-
+app.set('view engine','ejs');
 
 dotenv.config();
 
@@ -27,7 +26,7 @@ mongoose.connect(process.env.DB_CONNECT,
 app.use(Bodyparser.urlencoded());
 app.use(Bodyparser.json());
 app.use('/api/user',authRoute)
-
+//app.get('/views/account')
 
 
 
