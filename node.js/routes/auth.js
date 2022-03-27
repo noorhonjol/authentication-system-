@@ -1,6 +1,5 @@
 const router=require('express').Router();
 const User=require('../model/user');
-
 router.post('/register',async(req,res)=>{
     const user =new User({
         FirstName:req.body.FirstName
@@ -11,13 +10,15 @@ router.post('/register',async(req,res)=>{
         ,Email:req.body.Email
     });
     try {
-        const found =await User.findOne({"Email":user.Email,"UserName":user.UserName});
-        if((found.Email===user.Email)&&(found.UserName===user.UserName)){
-            console.log("the user is found you cant add it");
-        }
-        else{
+        const found_email = await User.findOne({"Email":user.Email});
+        const found_userName = await User.findOne({"UserName":user.UserName});
+        if(!found_email&&!found_userName){
             const savedUser=await user.save();
             res.send(savedUser);
+        }
+        else{
+            console.log("the user is found you cant add it");
+            res.send("the user is found you cant add it")
         }
     } catch (err) {
         res.status(400).send(err)
@@ -25,6 +26,7 @@ router.post('/register',async(req,res)=>{
 })
 router.post('/login',async(req,res)=>{
     const foundemail =await User.findOne({Email:req.body.Email})
+    console.log(req.body.Email)
     if(!foundemail){
         console.log("the email dont found")
     }
@@ -38,15 +40,14 @@ router.post('/login',async(req,res)=>{
         }
     }}
 })
-
 router.put('/reset' , async(req ,res)=>{
     const newPassword = "123456"
     const confirmPassword = "123456"
-     if(newPassword===confirmPassword){
-       await user.findOneAndUpdate({UserName : "ahmad"} , {Passward : newPassword})
-       const a = await User.findOne({UserName : "ahmad"});
-       res.send(a);
-     }
-    })
+    if(newPassword===confirmPassword){
+    await user.findOneAndUpdate({UserName : "ahmad"} , {Passward : newPassword})
+    const a = await User.findOne({UserName : "ahmad"});
+    res.send(a);
+    }
+})
 
 module.exports=router;
