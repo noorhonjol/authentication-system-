@@ -3,9 +3,8 @@ const mongoose=require('mongoose');
 const dotenv=require('dotenv')
 const app = express();
 const Bodyparser=require('body-parser');
-const authRoute = require('./routes/auth')
+const authRoute = require('./routes/auth');
 const expresslayout=require('express-ejs-layouts');
-
 
 
 app.use(express.static('public'))
@@ -14,7 +13,6 @@ app.use(expresslayout);
 app.set('view engine','ejs');
 
 dotenv.config();
-
 
 
 mongoose.connect(process.env.DB_CONNECT,
