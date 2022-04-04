@@ -1,6 +1,4 @@
 const mongoose=require('mongoose');
-
-
 const userSchema=new mongoose.Schema({
     FirstName:{
         type:String,
@@ -35,8 +33,10 @@ const userSchema=new mongoose.Schema({
         require:true,
         max:255,
         min:6,
+    },
+    verifycode:{
+        type:Number,
+        default:-1
     }
 })
-
-
 module.exports=mongoose.model('user',userSchema);
