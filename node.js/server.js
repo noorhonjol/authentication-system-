@@ -46,8 +46,6 @@ app.use('',authRoute)
 
 //app.get('/views/account')
 
-app.use('/',authRoute)
-
 app.listen(3200, ()=>{
     console.log("server is run");
 })
