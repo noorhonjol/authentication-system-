@@ -30,7 +30,10 @@ router.post('/register',async(req,res)=>{
 
 router.post('/login',async(req,res)=>{
     const foundemail =await User.findOne({Email:req.body.Email})
+
     console.log(req.body);
+
+    console.log(req.body.Email)
     if(!foundemail){
         console.log("the email dont found")
     }
@@ -105,5 +108,15 @@ router.post('/update/:id',async(req,res)=>{
     res.redirect('/login')
 })
 
+
+router.put('/reset' , async(req ,res)=>{
+    const newPassword = "123456"
+    const confirmPassword = "123456"
+    if(newPassword===confirmPassword){
+    await user.findOneAndUpdate({UserName : "ahmad"} , {Passward : newPassword})
+    const a = await User.findOne({UserName : "ahmad"});
+    res.send(a);
+    }
+})
 
 module.exports=router;
