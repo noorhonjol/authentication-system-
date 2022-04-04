@@ -66,7 +66,7 @@ router.post('/forget',async(req,res)=>{
             to:req.body.Email,
             subject:"verfiy code",
             text:`this your verfiy code ${random}
-            and this linlk => http://localhost:3200/update`
+            and this linlk => http://localhost:3200/update${id}`
         }
         transporter.sendMail(mailoption,(err,dat)=>{
             if(err){
