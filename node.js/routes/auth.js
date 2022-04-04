@@ -31,22 +31,17 @@ router.post('/register',async(req,res)=>{
 router.post('/login',async(req,res)=>{
     const foundemail =await User.findOne({Email:req.body.UserOrEmail})
 
-    console.log(req.body);
-
-    console.log(req.body.UserOrEmail)
     if(!foundemail){
         console.log("the email dont found")
     }
     else{
-    if(foundemail.Email===req.body.UserOrEmail){
-        console.log(foundemail._id)
-        if(foundemail.Passward===req.body.Passward){
-            console.log("welcome in your account")
-        }
-        else{
-            console.log("password dont match")
-        }
-
+        if(foundemail.Email===req.body.UserOrEmail){
+            if(foundemail.Passward===req.body.Passward){
+                console.log("welcome in your account")
+            }
+            else{
+                console.log("password dont match")
+            }
     }}
 })
 router.post('/forget',async(req,res)=>{
@@ -71,7 +66,7 @@ router.post('/forget',async(req,res)=>{
             to:req.body.Email,
             subject:"verfiy code",
             text:`this your verfiy code ${random}
-            and this linlk => http://localhost:3200/update`
+            and this linlk => http://localhost:3200/update${id}`
         }
         transporter.sendMail(mailoption,(err,dat)=>{
             if(err){
