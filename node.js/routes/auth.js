@@ -29,24 +29,19 @@ router.post('/register',async(req,res)=>{
 })
 
 router.post('/login',async(req,res)=>{
-    const foundemail =await User.findOne({Email:req.body.Email})
+    const foundemail =await User.findOne({Email:req.body.UserOrEmail})
 
-    console.log(req.body);
-
-    console.log(req.body.Email)
     if(!foundemail){
         console.log("the email dont found")
     }
     else{
-    if(foundemail.Email===req.body.Email){
-        console.log(foundemail._id)
-        if(foundemail.Passward===req.body.Passward){
-            console.log("welcome in your account")
-        }
-        else{
-            console.log("password dont match")
-        }
-
+        if(foundemail.Email===req.body.UserOrEmail){
+            if(foundemail.Passward===req.body.Passward){
+                console.log("welcome in your account")
+            }
+            else{
+                console.log("password dont match")
+            }
     }}
 })
 router.post('/forget',async(req,res)=>{
