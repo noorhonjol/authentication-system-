@@ -11,6 +11,7 @@ router.post('/register',async(req,res)=>{
         ,Passward:req.body.Passward
         ,date:req.body.date
         ,Email:req.body.Email
+        
     })
     try {
         const found_email = await User.findOne({"Email":user.Email});
@@ -66,7 +67,8 @@ router.post('/forget',async(req,res)=>{
             to:req.body.Email,
             subject:"verfiy code",
             text:`this your verfiy code ${random}
-            and this linlk => http://localhost:3200/update${id}`
+            and this linlk => http://localhost:3200/update/${id}`
+            
         }
         transporter.sendMail(mailoption,(err,dat)=>{
             if(err){
