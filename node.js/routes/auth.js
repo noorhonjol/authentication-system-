@@ -51,6 +51,23 @@ router.post('/login',async(req,res)=>{
     if(!foundemail){
         console.log("the email dont found")
     }
+    /////
+
+
+
+
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found")console.log("the email dont found")
+
+
+
+
+
+    /////////
+
     else{
         if(foundemail.Email===req.body.UserOrEmail){
             if(foundemail.Passward===req.body.Passward){
