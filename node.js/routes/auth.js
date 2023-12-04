@@ -41,7 +41,7 @@ router.post('/login',async(req,res)=>{
                 console.log("welcome in your account")
             }
             else{
-                console.log("password dont match")
+                console.log("password is wrong")
             }
     }}
 })
