@@ -127,14 +127,13 @@ router.post('/vefiy/:id',async(req,res)=>{
         res.send("unvalid code");
     }
 });
+
 router.get('/update/:id',async(req,res)=>{
     res.render("update")
 })
-router.post('/update/:id',async(req,res)=>{
-    if(req.body.password===req.body.confirmpassword){
-        await User.findByIdAndUpdate(req.params.id,{Passward:req.body.password})   
-    }
-    res.redirect('/login')
-})
 
+
+router.post('/:id',async(req,res)=>{
+    res.send("welcome")
+})
 module.exports=router;
