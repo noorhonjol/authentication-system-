@@ -34,6 +34,11 @@ app.get('/forget',(req, res)=>{
     res.render('index')
 })
 
+
+app.get('/views/account',(req, res)=>{
+    res.render('account')
+})
+
 app.use(Bodyparser.urlencoded());
 app.use(Bodyparser.json());
 app.use('',authRoute)
