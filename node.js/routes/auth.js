@@ -36,7 +36,7 @@ router.post('/register',async(req,res)=>{
 //////
 
 
-
+//we can use this code to send email
 
 
 ////////
