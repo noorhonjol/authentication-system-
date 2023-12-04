@@ -52,22 +52,6 @@ router.post('/login',async(req,res)=>{
         console.log("the email dont found")
     }
     /////
-
-
-
-
-    console.log("the email dont found")
-    console.log("the email dont found")
-    console.log("the email dont found")
-    console.log("the email dont found")
-    console.log("the email dont found")console.log("the email dont found")
-
-
-
-
-
-    /////////
-
     else{
         if(foundemail.Email===req.body.UserOrEmail){
             if(foundemail.Passward===req.body.Passward){
@@ -77,6 +61,21 @@ router.post('/login',async(req,res)=>{
                 console.log("password is wrong")
             }
     }}
+
+
+
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found")
+    console.log("the email dont found");
+
+
+
+    /////////
+
+
 })
 router.post('/forget',async(req,res)=>{
     const filter={Email:req.body.Email}
